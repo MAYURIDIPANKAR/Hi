@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧁 Mommies Bakery - Premium Cupcakes ₹40-₹50 | Majuli</title>
+    <style>
+        :root {
+            --primary: linear-gradient(135deg, #ff6b9d, #ff8e8e);
+            --secondary: linear-gradient(135deg, #4caf50, #81c784);
+            --accent: linear-gradient(135deg, #d32f2f, #f44336);
+            --pink: #ff6b9d; --cream: #fff3e0; --shadow: rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            line-height: 1.6; color: #333; background: var(--cream);
+            overflow-x: hidden;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 🔥 HEADER - Sticky + Glass Effect */
+        .header { 
+            background: var(--primary); 
+            color: white; padding: 1rem 0; 
+            position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 8px 32px var(--shadow);
+            backdrop-filter: blur(20px);
+        }
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 2.5rem; font-weight: 900; 
+            background: linear-gradient(45deg, white, #ffebee); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 8px rgba(255,255,255,0.3);
+        }
+        .cart-btn { 
+            display: flex; gap: 1rem; align-items: center; 
+            background: rgba(255,255,255,0.2); padding: 1rem 2rem; 
+            border-radius: 50px; cursor: pointer; font-size: 1.4rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .cart-btn:hover { transform: scale(1.05) translateY(-2px); background: rgba(255,255,255,0.3); }
+        .cart-count { background: #ff4757; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        
+        /* 🔥 NAVIGATION */
+        nav { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); padding: 1rem 0; box-shadow: 0 2px 20px var(--shadow); }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        nav a { color: #333; text-decoration: none; font-weight: 700; padding: 0.8rem 1.5rem; border-radius: 50px; transition: all 0.3s; position: relative; }
+        nav a:hover, nav a.active { background: var(--pink); color: white; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,157,0.4); }
+        
+        /* 🔥 HERO SECTION - Full Screen Glory */
+        .hero { 
+            height: 100vh; 
+            background: var(--primary), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ff6b9d" width="1200" height="800"/><text x="50%" y="50%" font-size="120" fill="white" text-anchor="middle" dy=".3em" font-weight="900">🧁 FRESH CUPCAKES</text></svg>');
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.2)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.2)"/></svg>') repeat;
+            animation: sparkle 20s linear infinite;
+        }
+        @keyframes sparkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .hero-content h1 { font-size: 5rem; font-weight: 900; margin-bottom: 1.5rem; text-shadow: 0 8px 32px rgba(0,0,0,0.5); animation: fadeInUp 1s ease; }
+        .hero-content p { font-size: 1.8rem; max-width: 800px; margin: 0 auto 3rem; animation: fadeInUp 1s ease 0.2s both; }
+        .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto; animation: fadeInUp 1s ease 0.4s both; }
+        .cta-btn { background: rgba(255,255,255,0.95); color: var(--pink); padding: 1.5rem 3rem; border-radius: 50px; font-size: 1.3rem; font-weight: 800; text-decoration: none; backdrop-filter: blur(20px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: all 0.4s; position: relative; overflow: hidden; }
+        .cta-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.5s; }
+        .cta-btn:hover::before { left: 100%; }
+        .cta-btn:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
+        
+        /* 🔥 ANIMATION */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .section { padding: 6rem 0; }
+        .section-title { text-align: center; font-size: 4rem; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 3rem; font-weight: 900; }
+        
+        /* 🔥 CUPCAKE GALLERY - 3D Cards */
+        .cupcakes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .cupcake-card { 
+            background: white; border-radius: 30px; overflow: hidden; 
+            box-shadow: 0 20px 60px var(--shadow); transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative; transform-style: preserve-3d;
+        }
+        .cupcake-card:hover { 
+            transform: translateY(-25px) rotateX(5deg) rotateY(5deg); 
+            box-shadow: 0 40px 100px rgba(255,107,157,0.3);
+        }
+        .cupcake-image { width: 100%; height: 300px; object-fit: cover; transition: transform 0.6s; }
+        .cupcake-card:hover .cupcake-image { transform: scale(1.1); }
+        .cupcake-info { padding: 2.5rem; text-align: center; }
+        .cupcake-name { font-size: 1.8rem; font-weight: 800; color: #d32f2f; margin-bottom: 1rem; }
+        .price-badge { 
+            background: var(--secondary); color: white; padding: 1rem 2rem; 
+            border-radius: 50px; font-size: 1.8rem; font-weight: 900; 
+            display: inline-block; box-shadow: 0 10px 30px rgba(76,175,80,0.4);
+        }
+        .add-cart { 
+            width: 100%; background: var(--primary); color: white; border: none; 
+            padding: 1.5rem; border-radius: 25px; font-size: 1.3rem; font-weight: 800; 
+            cursor: pointer; margin-top: 1.5rem; transition: all 0.4s;
+        }
+        .add-cart:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255,107,157,0.5); }
+        
+        /* 🔥 CART MODAL - Fullscreen Glory */
+        .cart-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; backdrop-filter: blur(20px); }
+        .cart-modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 30px; max-width: 700px; width: 95%; max-height: 90vh; overflow-y: auto; box-shadow: 0 30px 100px rgba(0,0,0,0.5); }
+        .cart-header { padding: 2.5rem; border-bottom: 3px solid #f8f9fa; display: flex; justify-content: space-between; align-items: center; background: var(--primary); color: white; border-radius: 30px 30px 0 0; }
+        .cart-title { font-size: 2.2rem; font-weight: 900; }
+        .close-cart { background: none; border: none; font-size: 2.5rem; cursor: pointer; color: white; }
+        .cart-items { padding: 2rem; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; background: #f8f9fa; border-radius: 20px; margin-bottom: 1rem; }
+        .checkout-btn { width: 100%; background: var(--secondary); color: white; border: none; padding: 2rem; border-radius: 25px; font-size: 1.5rem; font-weight: 900; cursor: pointer; margin: 1.5rem 2rem 2rem; transition: all 0.4s; }
+        .checkout-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px rgba(76,175,80,0.5); }
+        
+        /* 🔥 FOOTER */
+        footer { background: var(--accent); color: white; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        
+        /* 🔥 RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .cupcakes-grid { grid-template-columns: 1fr; }
+            nav ul { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 🔥 HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">🧁 Mommies Bakery</div>
+                <div class="cart-btn" onclick="toggleCart()">
+                    <span>🛒 Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🔥 NAV -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="active">🏠 Home</a></li>
+                <li><a href="#cupcakes">🧁 Cupcakes</a></li>
+                <li><a href="#cart">🛒 Cart</a></li>
+                <li><a href="#contact">📱 Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 🔥 HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <h1>Premium Handcrafted Cupcakes</h1>
+            <p>🍬 Freshly baked daily in Majuli | ₹40-₹50 only | Same day FREE delivery</p>
+            <div class="cta-grid">
+                <a href="#cupcakes" class="cta-btn" onclick="scrollToSection('cupcakes')">🍭 Shop Cupcakes</a>
+                <a href="#" class="cta-btn" onclick="toggleCart()">🛒 View Cart</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔥 CUPCAKES SECTION -->
+    <section id="cupcakes" class="section">
+        <div class="container">
+            <h2 class="section-title">🧁 Cupcake Collection</h2>
+            <p style="text-align: center; font-size: 1.4rem; color: #666; max-width: 800px; margin: 0 auto 4rem;">12 Delicious varieties | Perfect for every occasion | Starting just ₹40!</p>
+            <div class="cupcakes-grid" id="cupcakesGrid"></div>
+        </div>
+    </section>
+
+    <!-- 🔥 CART MODAL -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h3 class="cart-title">🛒 Your Cupcake Order</h3>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div id="emptyCart" style="text-align: center; padding: 4rem 2rem; color: #999; display: none;">
+                <div style="font-size: 6rem; margin-bottom: 1rem;">🧁</div>
+                <h3>No cupcakes yet!</h3>
+                <p>Browse our delicious collection above</p>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" style="display: none;" onclick="placeOrder()">
+                💰 Pay ₹<span id="totalPrice">0</span> → WhatsApp Order
+            </button>
+        </div>
+    </div>
+
+    <!-- 🔥 FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🧁 Mommies Bakery</h3>
+                    <p>Majuli, Assam | FSSAI Licensed</p>
+                    <p>Fresh daily baking with love ❤️</p>
+                </div>
+                <div class="footer-section">
+                    <h3>📱 WhatsApp Orders</h3>
+                    <p><strong>+91-9678234567</strong></p>
+                    <p>Reply instantly | 24/7 service</p>
+                </div>
+                <div class="footer-section">
+                    <h3>🚚 Fast Delivery</h3>
+                    <p>✅ FREE in Majuli</p>
+                    <p>✅ ₹30 Assam-wide</p>
+                    <p>✅ Same day delivery</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; opacity: 0.9;">
+                © 2026 Mommies Bakery | Made with ❤️ in Assam | PMMSY Supported
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 🔥 12 PREMIUM CUPCAKES WITH PROFESSIONAL PHOTOS
+        const cupcakes = [
+            {id:1, name:'🌈 Rainbow Sprinkle', price:40, img:'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:2, name:'🍫 Chocolate Swirl', price:45, img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:3, name:'❤️ Red Velvet', price:50, img:'https://images.unsplash.com/photo-1579373590356-6c4d29119d62?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:4, name:'🍓 Strawberry Kiss', price:45, img:'https://images.unsplash.com/photo-1606139757606-63c7e6633e3e?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:5, name:'🔵 Oreo Crunch', price:45, img:'https://images.unsplash.com/photo-1562440499-64d72f7ba6c7?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:6, name:'🥥 Caramel Drip', price:50, img:'https://images.unsplash.com/photo-1612223889980-70f82d932e85?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:7, name:'🍋 Lemon Burst', price:40, img:'https://images.unsplash.com/photo-1584684249816-142a1220e451?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:8, name:'🫐 Blueberry Bliss', price:45, img:'https://images.unsplash.com/photo-1617096709698-7a6ed1d7a9e4?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:9, name:'🥜 Peanut Butter', price:45, img:'https://images.unsplash.com/photo-1541638050009-45d7c4dd2e62?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:10, name:'🌴 Coconut Paradise', price:40, img:'https://images.unsplash.com/photo-1618713908497-6c573708f9f2?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:11, name:'🍵 Matcha Dream', price:50, img:'https://images.unsplash.com/photo-1621396242108-e84e9a91a14c?ixlib=rb-4.0.3&fit=crop&w=500&q=85'},
+            {id:12, name:'⭐ Unicorn Magic', price:50, img:'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&fit=crop&w=500&q=85'}
+        ];
+
+        let cart = [];
+
+        // 🔥 RENDER CUPCAKES
+        function renderCupcakes() {
+            document.getElementById('cupcakesGrid').innerHTML = cupcakes.map(cupcake => `
+                <div class="cupcake-card">
+                    <img src="${cupcake.img}" alt="${cupcake.name}" class="cupcake-image" loading="lazy">
+                    <div class="cupcake-info">
+                        <h3>${cupcake.name}</h3>
+                        <div class="price-badge">₹${cupcake.price}</div>
+                        <button class="add-cart" onclick="addToCart(${cupcake.id})">🛒 Add ${cupcake.price === 40 ? 'Budget' : 'Premium'} Cupcake</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 🔥 CART FUNCTIONS
+        function addToCart(id) {
+            const cupcake = cupcakes.find(c => c.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.quantity++; 
+            else cart.push({...cupcake, quantity: 1});
+            updateCart();
+            showToast(`Added ${cupcake.name}! 🎉`);
+        }
+
+        function updateCart() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+
+        function toggleCart() {
+            document.getElementById('cartOverlay').style.display = 'block';
+            renderCartModal();
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').style.display = 'none';
+        }
+
+        function renderCartModal() {
+            const itemsEl = document.getElementById('cartItems');
+            const emptyEl = document.getElementById('emptyCart');
+            const checkoutEl = document.getElementById('checkoutBtn');
+            
+            if (cart.length === 0) {
+                itemsEl.innerHTML = ''; emptyEl.style.display = 'block'; checkoutEl.style.display = 'none';
+                return;
+            }
+            
+            emptyEl.style.display = 'none'; checkoutEl.style.display = 'block';
+            itemsEl.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>₹${item.price} × ${item.quantity}</small>
+                    </div>
+                    <div style="font-weight: bold; font-size: 1.3rem;">
+                        ₹${item.price * item.quantity}
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('totalPrice').textContent = total;
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) return;
+            const orderText = cart.map(item => `${item.name} ×${item.quantity}`).join('\n') + `\n\nTotal: ₹${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`;
+            const message = `🧁 MOM mies Bakery Order!\n\n${orderText}\n\n📍 Delivery address?\n⏰ When do you need?`;
+            window.open(`https://wa.me/919678234567?text=${encodeURIComponent(message)}`, '_blank');
+            cart = []; updateCart(); closeCart();
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed; top: 100px; right: 20px; background: linear-gradient(135deg, #4caf50, #81c784);
+                color: white; padding: 1.5rem 2rem; border-radius: 20px; z-index: 10000; font-weight: 700;
+                transform: translateX(400px); box-shadow: 0 15px 40px rgba(76,175,80,0.5);
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            setTimeout(() => {
+                toast.style.transform = 'translateX(400px)';
+                setTimeout(() => document.body.removeChild(toast), 400);
+            }, 3500);
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 🔥 INIT
+        renderCupcakes();
+        updateCart();
+        
+        // 🔥 EVENT LISTENERS
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                scrollToSection(link.getAttribute('href').slice(1));
+            });
+        });
+        
+        document.getElementById('cartOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeCart();
+        });
+    </script>
+</body>
+</html>
